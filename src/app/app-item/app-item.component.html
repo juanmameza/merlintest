@@ -1,3 +1,10 @@
-<p>
-  app-item works!
-</p>
+<div *ngIf="CategoryApps">
+  <ul>
+    <li *ngFor="let app of CategoryApps">
+
+    {{app.data.display_name}}
+
+    </li>
+  </ul>
+
+</div>

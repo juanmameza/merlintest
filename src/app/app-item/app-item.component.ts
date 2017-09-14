@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Child } from '../app.interfaces'
 
 @Component({
   selector: 'app-app-item',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-item.component.css']
 })
 export class AppItemComponent implements OnInit {
+
+  @Input() CategoryApps : Child[];
 
   constructor() { }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';  
 
+import { Child } from '../app.interfaces'
+
 import { AppServiceService } from '../app-service.service';
 
 @Component({
@@ -11,6 +13,8 @@ import { AppServiceService } from '../app-service.service';
 export class CategoryComponent implements OnInit {
 
   categories : string[];
+  selectedCategory : string;
+  appsFromCategory: Child[];
 
   constructor(
     private http: HttpClient,
@@ -33,5 +37,22 @@ export class CategoryComponent implements OnInit {
     })
 
   }
+
+  showAppItemsOnSelection(category){
+    
+    this.selectedCategory = category;
+    this.appsFromCategory = [];
+
+    this.appService.getChildren().then(children => {
+      children.forEach( child => {
+
+        console.log(child);
+        console.log(category);
+        child.data.advertiser_category == category ? this.appsFromCategory.push(child) : console.log("Not on category " + category);
+
+      });
+    })
+  }
+
 
 }

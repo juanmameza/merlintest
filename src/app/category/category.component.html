@@ -1,7 +1,9 @@
 <div class="container" *ngIf="categories.length !== 0">
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let category of categories">
+    <li class="list-group-item" *ngFor="let category of categories" (click)="showAppItemsOnSelection(category)">
       {{category}}
     </li>
   </ul>
 </div>
+
+<app-app-item [CategoryApps]="appsFromCategory"></app-app-item>
