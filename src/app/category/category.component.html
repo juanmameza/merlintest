@@ -1,3 +1,7 @@
-<p>
-  category works!
-</p>
+<div *ngIf="categories.length !== 0">
+  <ul>
+    <li *ngFor="let category of categories">
+      {{category}}
+    </li>
+  </ul>
+</div>

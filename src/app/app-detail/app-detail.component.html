@@ -1,3 +1,6 @@
-<p>
-  app-detail works!
-</p>
+<div *ngIf="App">
+    <h2>{{App.data.display_name}} details!</h2>
+    <div>
+      <h3>{{App.data.public_description}}</h3>
+    </div>
+  </div>

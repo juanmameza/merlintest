@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { RootObject , Child } from './app-list.interfaces';
+import { RootObject , Child } from '../app.interfaces';
+import {AppServiceService } from '../app-service.service'
+
 
 @Component({
   selector: 'app-app-list',
@@ -9,26 +11,19 @@ import { RootObject , Child } from './app-list.interfaces';
   styleUrls: ['./app-list.component.css']
 })
 export class AppListComponent implements OnInit {
-
-  private URL = 'https://www.reddit.com/reddits.json';
   
   private results : Child[];
 
   private selectedApp : Child;
 
-  constructor(private http : HttpClient) { }
+  constructor(
+    private http : HttpClient,
+    private appService : AppServiceService
+  ) { }
 
   ngOnInit() {
-    
-    // Make the HTTP request:
-    this.http.get<RootObject>(this.URL).subscribe(root => {
-      
-      // Read the result field from the JSON response.
-      this.results = root.data.children;
-    
-      console.log(root.data.children);
-
-    });
+  
+    this.appService.getChildren().then(children => this.results = children);
 
   }
 

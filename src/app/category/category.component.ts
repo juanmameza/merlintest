@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-  
+import { HttpClient } from '@angular/common/http';  
+
+import { AppServiceService } from '../app-service.service';
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -7,11 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
+  categories : string[];
 
-
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private appService: AppServiceService
+  ) { }
 
   ngOnInit() {
+
+    this.categories = [];
+
+    this.appService.getChildren().then(children => {
+
+      children.forEach( child => {
+
+        // If category already exists, do not push.
+        this.categories.indexOf(child.data.advertiser_category) === -1 ? this.categories.push(child.data.advertiser_category) : console.log("This item already exists");
+
+      });
+
+    })
+
   }
 
 }

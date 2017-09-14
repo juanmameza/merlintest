@@ -1,8 +1,10 @@
 <div>
   <ul>
     <li *ngFor="let result of results">
-      <img src="{{result.data.icon_img}}">
+      <img src="{{result.data.icon_img}}" (click)="selectApp(result)">
       {{result.data.display_name}}
     </li>   
   </ul>
 </div>
+
+<app-app-detail [App]="selectedApp"></app-app-detail>
