@@ -16,6 +16,8 @@ export class CategoryComponent implements OnInit {
   selectedCategory : string;
   appsFromCategory: Child[];
 
+  categoryLoading : boolean;
+
   constructor(
     private http: HttpClient,
     private appService: AppServiceService
@@ -42,15 +44,21 @@ export class CategoryComponent implements OnInit {
     
     this.selectedCategory = category;
     this.appsFromCategory = [];
+    this. categoryLoading = true;
 
     this.appService.getChildren().then(children => {
       children.forEach( child => {
 
         console.log(child);
         console.log(category);
-        child.data.advertiser_category == category ? this.appsFromCategory.push(child) : console.log("Not on category " + category);
+        if(child.data.advertiser_category == category){
+          this.appsFromCategory.push(child)
+        }
 
       });
+
+      this.categoryLoading = false;
+
     })
   }
 

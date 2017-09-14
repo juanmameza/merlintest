@@ -12,6 +12,8 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
 import { AppServiceService } from './app-service.service';
 import { AppListComponent } from './app-list/app-list.component'
 
+import { LoadersCssModule } from 'angular2-loaders-css';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { AppListComponent } from './app-list/app-list.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    LoadersCssModule
   ],
   providers: [AppServiceService],
   bootstrap: [AppComponent]

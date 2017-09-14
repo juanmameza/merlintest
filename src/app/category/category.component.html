@@ -1,9 +1,13 @@
-<div class="container" *ngIf="categories.length !== 0">
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let category of categories" (click)="showAppItemsOnSelection(category)">
-      {{category}}
-    </li>
-  </ul>
+<div class="btn-group" *ngIf="categories.length !== 0">
+    <h3>Categories</h3><br><br>    
+    <button type="button" class="btn btn-primary"
+    *ngFor="let category of categories"
+    (click)="showAppItemsOnSelection(category)"> {{category}} </button>
 </div>
+<br><br><br>
+
+
+<div class="loader center-block" *ngIf="categoryLoading"></div>
+
 
 <app-app-item [CategoryApps]="appsFromCategory"></app-app-item>
