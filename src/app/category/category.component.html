@@ -1,6 +1,6 @@
-<div *ngIf="categories.length !== 0">
-  <ul>
-    <li *ngFor="let category of categories">
+<div class="container" *ngIf="categories.length !== 0">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let category of categories">
       {{category}}
     </li>
   </ul>

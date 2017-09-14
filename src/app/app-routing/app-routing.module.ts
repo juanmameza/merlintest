@@ -8,11 +8,11 @@ import {AppDetailComponent } from '../app-detail/app-detail.component';
 import {AppListComponent} from '../app-list/app-list.component'
 
 const ROUTES : Routes = [
-  { path: 'category', component: CategoryComponent},
+  { path: 'categories', component: CategoryComponent},
   { path: 'app-item', component: AppItemComponent},
   { path: 'app-detail', component: AppDetailComponent},
   { path: 'app-list', component: AppListComponent},
-  { path: '',   redirectTo: '/category', pathMatch: 'full' },
+  { path: '',   redirectTo: '/categories', pathMatch: 'full' },
 ];
 
 @NgModule({
